@@ -1,0 +1,113 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #000;
+    color: #fff;
+    text-align: center;
+}
+
+header#mainHeader {
+    display: flex;
+    align-items: center;
+    background-color: #111;
+    padding: 10px 20px;
+    gap: 20px;
+}
+
+#logoTopLeft {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+}
+
+#mainHeader h1 {
+    margin: 0;
+    font-size: 24px;
+    flex-grow: 1;
+    text-align: left;
+}
+
+#welcomeMsg {
+    font-size: 14px;
+    color: #0a992e;
+}
+
+#loginSection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 80vh;
+    gap: 10px;
+}
+
+input, select, button {
+    margin: 5px;
+    padding: 8px;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+button {
+    background-color: #0a992e;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #06691f;
+}
+
+#mainMenu {
+    display: flex;
+    justify-content: center;  
+    gap: 10px;               
+    margin: 20px 0;          
+}
+
+#mainMenu button {
+    padding: 10px 15px;
+    font-size: 16px;
+}
+
+.section {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    margin: 5px 0;
+}
+
+#addPlayerPanel, #addMatchPanel {
+    display: none;
+    margin-top: 20px;
+    border: 1px solid #0a992e;
+    padding: 15px;
+    border-radius: 10px;
+    width: 250px;
+    text-align: center;
+}
+
+#mainFooter {
+    background-color: #111;
+    color: #0a992e;
+    padding: 15px 0;
+    width: 100%;
+    text-align: center;
+    font-size: 14px;
+    border-top: 1px solid #0a992e;
+    /* Eliminamos position fixed */
+}
+
+

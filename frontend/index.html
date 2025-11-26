@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gestión de Jugadores</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header id="mainHeader">
+    <img src="img/winners.png" id="logoTopLeft" alt="Logo">
+    <h1>Gestión de Jugadores</h1>
+    <span id="welcomeMsg"></span>
+  </header>
+
+  <section id="loginSection">
+    <h2>Login</h2>
+    <input id="loginUsername" type="text" placeholder="Usuario">
+    <input id="loginPassword" type="password" placeholder="Contraseña">
+    <button onclick="login()">Ingresar</button>
+    <p id="loginError" style="color:red;"></p>
+  </section>
+
+  <!-- ==========================
+       MENÚ PRINCIPAL
+  ========================== -->
+  <nav id="mainMenu" style="display:none; flex-direction: column; gap:10px;">
+  <p id="menuWelcomeMsg"></p>
+  
+  <!-- Botones -->
+  <button id="btnMyTeam" onclick="showSection('myTeamSection')">Mi Equipo</button>
+  <button id="btnMatches" onclick="showSection('matchesSection')">Partidos</button>
+  <button id="btnChat" onclick="showSection('chatSection')">Chat</button>
+  <button id="btnExternalPlayers" data-role="admin" onclick="openExternalPlayers()">Jugadores Externos</button>
+  <button id="btnUserManagement" onclick="showSection('usersSection')">Gestión de Usuarios</button>
+  <button id="btnLogout" onclick="logout()">Cerrar Sesión</button>
+</nav>
+
+  <!-- ==========================
+       MI EQUIPO
+  ========================== -->
+  <section id="myTeamSection" style="display:none;">
+    <h2>Mi Equipo</h2>
+    <p>Presupuesto: $<span id="budgetDisplay"></span></p>
+    <ul id="myTeamList"></ul>
+    <!-- Solo visible para admin -->
+    <button id="btnResetTeam" onclick="resetMyTeam()" style="display:none;">Reiniciar Equipo</button>
+  </section>
+
+  <!-- ==========================
+       USUARIOS (ADMIN)
+  ========================== -->
+  <section id="usersSection" style="display:none;">
+    <h2>Usuarios</h2>
+    <ul id="userList"></ul>
+
+    <h3>Agregar Usuario</h3>
+    <input id="newUsername" type="text" placeholder="Usuario">
+    <input id="newPassword" type="password" placeholder="Contraseña">
+    <select id="newUserRole">
+      <option value="user">Usuario</option>
+      <option value="admin">Administrador</option>
+    </select>
+    <button onclick="addUser()">Agregar</button>
+  </section>
+
+  <!-- ==========================
+       CHAT
+  ========================== -->
+  <section id="chatSection" style="display:none;">
+  <h2>Chat</h2>
+  <select id="selectChatUser"></select>
+  <input id="chatMessage" type="text" placeholder="Escribir mensaje...">
+  <button type="button" onclick="sendMessage(event)">Enviar</button>
+  <ul id="chatList"></ul>
+</section>
+
+  <!-- ==========================
+       CALENDARIO DE PARTIDOS (solo admin)
+  ========================== -->
+  <section id="matchesSection" style="display:none;">
+  <h2>Partidos</h2>
+  <ul id="matchList"></ul>
+
+  <!-- Formulario para agregar partidos (solo admin) -->
+  <div id="addMatchForm" style="display:none;">
+    <h3>Agregar Partido</h3>
+    <input id="matchDate" type="date" placeholder="Fecha">
+    <input id="matchOpponent" type="text" placeholder="Equipo rival">
+    <button onclick="addMatch()">Agregar Partido</button>
+  </div>
+</section>
+
+
+<section id="externalPlayers" style="display:none;">
+  <h2>Jugadores Externos</h2>
+  <ul id="externalPlayersList"></ul>
+</section>
+
+
+  <footer id="mainFooter">
+    <p>© 2025 Gestión de Jugadores - Todos los derechos reservados</p>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>

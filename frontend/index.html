@@ -1,107 +1,253 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gestión de Jugadores</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colección de Figuritas</title>
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-  <header id="mainHeader">
-    <img src="img/winners.png" id="logoTopLeft" alt="Logo">
-    <h1>Gestión de Jugadores</h1>
-    <span id="welcomeMsg"></span>
-  </header>
+    <header id="mainHeader">
+        <div class="header-container">
+            <img src="img/winners.png" alt="Logo" class="logo">
+            <h1 class="title">Colección de Figuritas</h1>
+            <div id="menuUser" class="user-info">
+                <span id="menuWelcomeMsg">Usuario</span>
+                <span id="coinsDisplay">💰 $1000</span>
+            </div>
+        </div>
+    </header>
 
-  <section id="loginSection">
-    <h2>Login</h2>
-    <input id="loginUsername" type="text" placeholder="Usuario">
-    <input id="loginPassword" type="password" placeholder="Contraseña">
-    <button onclick="login()">Ingresar</button>
-    <p id="loginError" style="color:red;"></p>
-  </section>
+    <section id="loginSection">
+        <h2>Login</h2>
+        <input type="text" id="loginUsername" placeholder="Usuario">
+        <input type="password" id="loginPassword" placeholder="Contraseña">
+        <button id="loginBtn">Ingresar</button><br><br>
+        <button id="goToRegisterBtn">Crear cuenta</button>
+    </section>
 
-  <!-- ==========================
-       MENÚ PRINCIPAL
-  ========================== -->
-  <nav id="mainMenu" style="display:none; flex-direction: column; gap:10px;">
-  <p id="menuWelcomeMsg"></p>
-  
-  <!-- Botones -->
-  <button id="btnMyTeam" onclick="showSection('myTeamSection')">Mi Equipo</button>
-  <button id="btnMatches" onclick="showSection('matchesSection')">Partidos</button>
-  <button id="btnChat" onclick="showSection('chatSection')">Chat</button>
-  <button id="btnExternalPlayers" data-role="admin" onclick="openExternalPlayers()">Jugadores Externos</button>
-  <button id="btnUserManagement" onclick="showSection('usersSection')">Gestión de Usuarios</button>
-  <button id="btnLogout" onclick="logout()">Cerrar Sesión</button>
-</nav>
+    <nav id="mainMenu" style="display:none;">
 
-  <!-- ==========================
-       MI EQUIPO
-  ========================== -->
-  <section id="myTeamSection" style="display:none;">
-    <h2>Mi Equipo</h2>
-    <p>Presupuesto: $<span id="budgetDisplay"></span></p>
-    <ul id="myTeamList"></ul>
-    <!-- Solo visible para admin -->
-    <button id="btnResetTeam" onclick="resetMyTeam()" style="display:none;">Reiniciar Equipo</button>
-  </section>
+        <div class="dashboard-card stats-card">
 
-  <!-- ==========================
-       USUARIOS (ADMIN)
-  ========================== -->
-  <section id="usersSection" style="display:none;">
-    <h2>Usuarios</h2>
-    <ul id="userList"></ul>
+            <h2 id="welcomeDashboard">
+                Bienvenido
+            </h2>
 
-    <h3>Agregar Usuario</h3>
-    <input id="newUsername" type="text" placeholder="Usuario">
-    <input id="newPassword" type="password" placeholder="Contraseña">
-    <select id="newUserRole">
-      <option value="user">Usuario</option>
-      <option value="admin">Administrador</option>
-    </select>
-    <button onclick="addUser()">Agregar</button>
-  </section>
+            <p>
+                Álbum completado:
+                <span id="albumPercentage">0%</span>
+            </p>
 
-  <!-- ==========================
-       CHAT
-  ========================== -->
-  <section id="chatSection" style="display:none;">
-  <h2>Chat</h2>
-  <select id="selectChatUser"></select>
-  <input id="chatMessage" type="text" placeholder="Escribir mensaje...">
-  <button type="button" onclick="sendMessage(event)">Enviar</button>
-  <ul id="chatList"></ul>
-</section>
+            <div class="progress-bar">
+                <div id="albumProgress"></div>
+            </div>
 
-  <!-- ==========================
-       CALENDARIO DE PARTIDOS (solo admin)
-  ========================== -->
-  <section id="matchesSection" style="display:none;">
-  <h2>Partidos</h2>
-  <ul id="matchList"></ul>
+        </div>
 
-  <!-- Formulario para agregar partidos (solo admin) -->
-  <div id="addMatchForm" style="display:none;">
-    <h3>Agregar Partido</h3>
-    <input id="matchDate" type="date" placeholder="Fecha">
-    <input id="matchOpponent" type="text" placeholder="Equipo rival">
-    <button onclick="addMatch()">Agregar Partido</button>
-  </div>
-</section>
+        <div class="dashboard-grid">
 
+            <button id="btnCollection" class="dashboard-card">
+                <div class="icon">📚</div>
+                <span>Mi Colección</span>
+                <small>Ver figuritas</small>
+            </button>
 
-<section id="externalPlayers" style="display:none;">
-  <h2>Jugadores Externos</h2>
-  <ul id="externalPlayersList"></ul>
-</section>
+            <button id="btnOpenPack" class="dashboard-card">
+                <div class="icon">📦</div>
+                <span>Abrir Sobre</span>
+                <small>5 figuritas</small>
+            </button>
 
+            <button id="btnAlbum" class="dashboard-card">
+                <div class="icon">🏆</div>
+                <span>Álbum</span>
+                <small>Progreso</small>
+            </button>
 
-  <footer id="mainFooter">
-    <p>© 2025 Gestión de Jugadores - Todos los derechos reservados</p>
-  </footer>
+            <button id="btnRepeated" class="dashboard-card">
+                <div class="icon">🔁</div>
+                <span>Repetidas</span>
+                <small>Gestionar</small>
+            </button>
 
-  <script src="main.js"></script>
+            <button id="btnMarket" class="dashboard-card">
+                <div class="icon">💰</div>
+                <span>Mercado</span>
+                <small>Comprar/Vender</small>
+            </button>
+
+            <button id="btnTrades" class="dashboard-card">
+                <div class="icon">🤝</div>
+                <span>Intercambios</span>
+                <small>Con usuarios</small>
+            </button>
+
+            <button id="btnChat" class="dashboard-card">
+                <div class="icon">💬</div>
+                <span>Chat</span>
+                <small>Mensajes</small>
+            </button>
+
+            <button id="btnFilterRarity" class="dashboard-card">
+                <div class="icon">⭐</div>
+                <span>Rarezas</span>
+                <small>Filtrar</small>
+            </button>
+
+            <button id="btnUserManagement" class="dashboard-card">
+                <div class="icon">👥</div>
+                <span>Administrar Usuarios</span><br>
+                <small>Gestionar usuarios</small>
+            </button>
+
+            <button id="btnLogout" class="dashboard-card logout-card">
+                <div class="icon">🚪</div>
+                <span>Cerrar Sesión</span>
+                <small>Salir</small>
+            </button>
+
+        </div>
+
+    </nav>
+
+    <section id="registerSection" style="display:none;">
+        <h2>Registro</h2>
+        <input type="text" id="regUsername" placeholder="Usuario">
+        <input type="password" id="regPassword" placeholder="Contraseña">
+        <button id="registerBtn">Registrarse</button>
+
+        <button id="goToLoginBtn">Ya tengo cuenta</button>
+    </section>
+
+    <section id="collectionSection" style="display:none;">
+        <h2>Mi Colección</h2>
+        <ul id="collectionList"></ul>
+        <button class="backBtn">Volver al menú</button>
+    </section>
+
+    <section id="albumSection" style="display:none;">
+        <h2>Álbum</h2>
+
+        <p>
+            Figuritas coleccionadas:
+            <span id="albumCount">0</span>
+        </p>
+
+        <p>
+            Figuritas faltantes:
+            <span id="missingCount">0</span>
+        </p>
+
+        <hr>
+
+        <h3>Selecciones</h3>
+
+        <ul id="teamsList"></ul>
+
+        <hr>
+
+        <button class="backBtn">
+            Volver al menú
+        </button>
+    </section>
+
+    <section id="teamAlbumSection" style="display:none;">
+
+        <h2 id="teamTitle"></h2>
+
+        <div id="albumGrid"></div>
+
+        <br><br>
+
+        <button id="btnBackTeams">
+            Volver a selecciones
+        </button>
+
+    </section>
+
+    <section id="repeatedSection" style="display:none;">
+        <h2>Figuritas Repetidas</h2>
+        <ul id="repeatedList"></ul>
+        <button class="backBtn">Volver al menú</button>
+    </section>
+
+    <section id="marketSection" style="display:none;">
+        <h2>Mercado</h2>
+        <ul id="marketList"></ul>
+        <button class="backBtn">Volver al menú</button>
+    </section>
+
+    <section id="tradeSection" style="display:none;">
+        <h2>Intercambio</h2>
+
+        <h3>
+            Usuario seleccionado:
+            <span id="selectedUser"></span>
+        </h3>
+
+        <ul id="otherCollectionList"></ul>
+
+        <button class="backBtn">Volver</button>
+    </section>
+
+    <section id="tradesSection" style="display:none;">
+        <h2>Solicitudes de Intercambio</h2>
+
+        <ul id="tradeRequestsList"></ul>
+
+        <button class="backBtn">Volver al menú</button>
+    </section>
+
+    <section id="tradeUsersSection" style="display:none;">
+        <h2>Seleccionar Usuario</h2>
+
+        <ul id="tradeUsersList"></ul>
+
+        <button class="backBtn">Volver</button>
+    </section>
+
+    <section id="raritySection" style="display:none;">
+        <h2>Filtrar por Rareza</h2>
+        <select id="raritySelect">
+            <option value="Common">Common</option>
+            <option value="Rare">Rare</option>
+            <option value="Legend">Legend</option>
+        </select>
+
+        <button id="btnApplyRarity"> Filtrar </button><br><br>
+        <ul id="rarityList"></ul>
+        <button class="backBtn"> Volver al menú </button>
+    </section>
+
+    <section id="chatSection" style="display:none;">
+        <h2>Chat</h2>
+        <select id="selectChatUser"></select>
+        <ul id="chatMessagesList"></ul>
+        <input type="text" id="chatMessage" placeholder="Escribí tu mensaje"><br>
+        <button id="sendMessageBtn">Enviar</button><br><br>
+        <button id="clearMessagesBtn">Borrar Historial</button><br><br>
+        <button class="backBtn">Volver al menú</button><br><br>
+    </section>
+
+    <section id="userManagementSection" style="display:none;">
+        <h2>Administrar Usuarios</h2>
+
+        <ul id="usersList"></ul>
+
+        <button class="backBtn">
+            Volver al menú
+        </button>
+    </section>
+
+    <script type="module" src="js/controllers/appController.js"></script>
+    <footer id="mainFooter">
+        <div class="footer-container">
+            <p>© 2026 Mi app / Todos los derechos reservados</p>
+        </div>
+    </footer>
 </body>
+
 </html>

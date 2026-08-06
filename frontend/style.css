@@ -1,113 +1,737 @@
-body {
-    font-family: Arial, sans-serif;
+* {
     margin: 0;
     padding: 0;
-    background-color: #000;
-    color: #fff;
-    text-align: center;
+    box-sizing: border-box;
+    font-family: "Segoe UI", sans-serif;
 }
 
-header#mainHeader {
+html,
+body {
+    min-height: 100vh;
+    background: linear-gradient(rgba(8, 15, 30, .92), rgba(8, 15, 30, .92)), url("img/stadium.jpg");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: white;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+#mainHeader {
+    flex-shrink: 0;
+}
+
+.header-container {
+    width: 100%;
+    max-width: 1400px;
+
+    margin: 0 auto;
+
     display: flex;
     align-items: center;
-    background-color: #111;
-    padding: 10px 20px;
-    gap: 20px;
+
+    min-height: 65px;
+
+    gap: 25px;
 }
 
-#logoTopLeft {
+.logo {
     width: 60px;
     height: 60px;
+
     object-fit: contain;
+
+    flex-shrink: 0;
 }
 
-#mainHeader h1 {
-    margin: 0;
-    font-size: 24px;
-    flex-grow: 1;
-    text-align: left;
+.title {
+    color: #22c55e;
+
+    font-size: 2rem;
+    font-weight: 700;
+
+    text-align: center;
+
+    flex: 1;
+
+    line-height: 1.2;
 }
 
-#welcomeMsg {
-    font-size: 14px;
-    color: #0a992e;
-}
-
-#loginSection {
+.user-info {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 80vh;
-    gap: 10px;
+
+    align-items: flex-end;
+
+    gap: 5px;
+
+    min-width: 150px;
 }
 
-input, select, button {
-    margin: 5px;
-    padding: 8px;
-    border-radius: 5px;
-    font-size: 16px;
+#coinsDisplay {
+    color: #facc15;
+
+    font-weight: bold;
+
+    white-space: nowrap;
 }
+
+
+/* =========================================================
+   SECCIONES
+========================================================= */
+
+section {
+    display: none;
+
+    width: calc(100% - 40px);
+    max-width: 1100px;
+
+    margin: 40px auto;
+
+    padding: 30px;
+
+    background: rgba(17, 24, 39, 0.95);
+
+    border-radius: 20px;
+
+    border:
+        1px solid rgba(255, 255, 255, 0.08);
+
+    box-shadow:
+        0 15px 40px rgba(0, 0, 0, 0.35);
+}
+
+section h2 {
+    color: #22c55e;
+
+    margin-bottom: 20px;
+}
+
+
+/* =========================================================
+   INPUTS Y SELECTS
+========================================================= */
+
+input,
+select {
+    width: 100%;
+
+    padding: 14px;
+
+    border: none;
+
+    border-radius: 12px;
+
+    background: #1e293b;
+
+    color: white;
+
+    margin-bottom: 15px;
+}
+
+input:focus,
+select:focus {
+    outline: none;
+
+    box-shadow:
+        0 0 0 2px #22c55e;
+}
+
+
+/* =========================================================
+   BOTONES
+========================================================= */
 
 button {
-    background-color: #0a992e;
     border: none;
-    color: #fff;
+
+    border-radius: 12px;
+
+    padding: 12px 18px;
+
+    background: #22c55e;
+
+    color: white;
+
+    font-weight: 600;
+
     cursor: pointer;
+
+    transition:
+        transform 0.25s ease,
+        background 0.25s ease,
+        box-shadow 0.25s ease;
 }
 
 button:hover {
-    background-color: #06691f;
+    background: #16a34a;
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 5px 15px rgba(34, 197, 94, 0.2);
 }
+
+
+/* =========================================================
+   MENÚ PRINCIPAL / DASHBOARD
+========================================================= */
 
 #mainMenu {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding: 25px 20px 30px;
     display: flex;
-    justify-content: center;  
-    gap: 10px;               
-    margin: 20px 0;          
-}
-
-#mainMenu button {
-    padding: 10px 15px;
-    font-size: 16px;
-}
-
-.section {
-    display: none;
-    flex-direction: column;
-    align-items: center;
     justify-content: center;
-    padding: 20px;
+    align-items: center;
 }
+
+.dashboard-grid {
+    width: 100%;
+    max-width: 1050px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(170px, 1fr));
+    gap: 15px;
+}
+
+
+/* =========================================================
+   TARJETAS DEL MENÚ
+========================================================= */
+
+.dashboard-card {
+    width: 100%;
+    min-height: 125px;
+    padding: 15px;
+    background: linear-gradient(145deg, #1e293b, #111827);
+    border: 1px solid rgba(255, 255, 255, .08);
+    border-radius: 18px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 7px;
+    cursor: pointer;
+    transition: .25s;
+}
+
+.dashboard-card:hover {
+    transform: translateY(-4px);
+    border-color: #22c55e;
+    box-shadow: 0 8px 20px rgba(34, 197, 94, .25);
+}
+
+.dashboard-card h3 {
+    font-size: 18px;
+
+    color: white;
+}
+
+.dashboard-card p {
+    color: #94a3b8;
+
+    font-size: 14px;
+
+    line-height: 1.4;
+}
+
+.icon {
+    font-size: 1.8rem;
+    line-height: 1;
+}
+
+
+/* =========================================================
+   TARJETA DE ESTADÍSTICAS
+========================================================= */
+
+.stats-card {
+    grid-column: 1 / -1;
+    margin-top: 12px;
+    min-height: auto;
+    padding: 20px 25px;
+    text-align: center;
+}
+
+.stats-card:hover {
+    transform: none;
+}
+
+
+/* =========================================================
+   BARRA DE PROGRESO
+========================================================= */
+
+.progress-bar {
+    width: 100%;
+    max-width: 850px;
+    height: 15px;
+    margin: 8px auto 0;
+    background: #334155;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+#albumProgress {
+    width: 0;
+    height: 100%;
+    background: linear-gradient(90deg, #22c55e, #4ade80);
+    border-radius: 20px;
+    transition: width .5s ease;
+}
+
+
+/* =========================================================
+   LISTAS
+========================================================= */
 
 ul {
-    list-style-type: none;
+    list-style: none;
+
     padding: 0;
 }
 
-li {
-    margin: 5px 0;
+ul li {
+    margin-bottom: 12px;
 }
 
-#addPlayerPanel, #addMatchPanel {
-    display: none;
-    margin-top: 20px;
-    border: 1px solid #0a992e;
+
+/* =========================================================
+   FIGURITAS - COLECCIÓN
+========================================================= */
+
+.sticker-card {
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    background: #1e293b;
+
+    border:
+        1px solid rgba(255, 255, 255, 0.08);
+
+    border-radius: 15px;
+
     padding: 15px;
+
+    transition:
+        transform 0.25s ease,
+        border-color 0.25s ease;
+}
+
+.sticker-card:hover {
+    border-color: #22c55e;
+
+    transform: translateY(-2px);
+}
+
+.sticker-img {
+    width: 50px;
+    height: 65px;
+
+    object-fit: cover;
+
+    border-radius: 8px;
+
+    border: 2px solid #22c55e;
+
+    flex-shrink: 0;
+}
+
+.sticker-info {
+    flex: 1;
+}
+
+.sticker-info h3 {
+    color: #22c55e;
+
+    margin-bottom: 5px;
+}
+
+.sticker-info p {
+    margin: 2px 0;
+}
+
+.sticker-actions {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 8px;
+}
+
+.sticker-actions button {
+    min-width: 120px;
+}
+
+
+/* =========================================================
+   RAREZAS
+========================================================= */
+
+.rarity {
+    display: inline-block;
+
+    margin-top: 5px;
+
+    padding: 4px 10px;
+
+    border-radius: 20px;
+
+    font-size: 12px;
+
+    font-weight: bold;
+}
+
+.common {
+    background: #d1d5db;
+
+    color: #111827;
+}
+
+.rare {
+    background: #3b82f6;
+
+    color: white;
+}
+
+.legend {
+    background: gold;
+
+    color: black;
+}
+
+
+/* =========================================================
+   ÁLBUM
+========================================================= */
+
+#albumGrid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fill,
+            minmax(170px, 1fr));
+
+    gap: 15px;
+}
+
+.album-card {
+    background: #1e293b;
+
+    border-radius: 15px;
+
+    padding: 15px;
+
+    text-align: center;
+
+    border:
+        1px solid rgba(255, 255, 255, 0.08);
+
+    transition:
+        transform 0.25s ease,
+        border-color 0.25s ease;
+}
+
+.album-card:hover {
+    transform: scale(1.03);
+
+    border-color: #22c55e;
+}
+
+.album-img {
+    width: 120px;
+    height: 160px;
+
+    object-fit: cover;
+
     border-radius: 10px;
-    width: 250px;
+
+    margin-bottom: 10px;
+
+    border: 2px solid #22c55e;
+}
+
+.album-card.owned {
+    border: 2px solid #22c55e;
+}
+
+.album-card.missing {
+    border: 2px solid #ef4444;
+
+    opacity: 0.7;
+}
+
+.album-empty {
+    width: 120px;
+    height: 160px;
+
+    border:
+        2px dashed #64748b;
+
+    border-radius: 10px;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    background: #1e293b;
+
+    font-size: 22px;
+
+    font-weight: bold;
+
+    color: #64748b;
+
+    margin: auto;
+}
+
+
+/* =========================================================
+   SECCIÓN ÁLBUM
+========================================================= */
+
+#albumSection {
     text-align: center;
 }
+
+#albumSection h2 {
+    color: #22c55e;
+
+    margin-bottom: 15px;
+}
+
+#albumSection h3 {
+    margin: 25px 0 20px;
+
+    color: #22c55e;
+}
+
+#albumSection p {
+    margin: 8px 0;
+
+    font-size: 17px;
+}
+
+#albumSection hr {
+    margin: 25px 0;
+
+    border:
+        1px solid rgba(255, 255, 255, 0.15);
+}
+
+
+/* =========================================================
+   EQUIPOS
+========================================================= */
+
+#teamsList {
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    flex-wrap: wrap;
+
+    gap: 20px;
+
+    list-style: none;
+
+    padding: 20px 0;
+
+    margin: 0;
+}
+
+#teamsList li {
+    margin: 0;
+}
+
+.albumTeamBtn {
+    width: 180px;
+    height: 60px;
+
+    background:
+        linear-gradient(145deg,
+            #22c55e,
+            #16a34a);
+
+    border: none;
+
+    border-radius: 15px;
+
+    color: white;
+
+    font-size: 16px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.albumTeamBtn:hover {
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 0 20px rgba(34, 197, 94, 0.35);
+}
+
+
+/* =========================================================
+   CHAT
+========================================================= */
+
+#chatMessagesList li {
+    background: #1e293b;
+
+    padding: 12px;
+
+    border-radius: 10px;
+}
+
+
+/* =========================================================
+   INTERCAMBIOS
+========================================================= */
+
+#tradesSection {
+    text-align: center;
+}
+
+#tradeRequestsList {
+    list-style: none;
+
+    padding: 0;
+
+    margin: 30px auto;
+
+    width: 100%;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+}
+
+.trade-card {
+    width: 700px;
+
+    max-width: 100%;
+
+    background: #1e293b;
+
+    border:
+        1px solid rgba(255, 255, 255, 0.08);
+
+    border-radius: 18px;
+
+    padding: 25px;
+
+    transition:
+        transform 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.trade-card:hover {
+    border-color: #22c55e;
+
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 0 25px rgba(34, 197, 94, 0.25);
+}
+
+.trade-header {
+    font-size: 22px;
+
+    color: #22c55e;
+
+    font-weight: bold;
+
+    margin-bottom: 25px;
+
+    text-align: center;
+}
+
+.trade-body {
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 40px;
+
+    margin-bottom: 25px;
+}
+
+.trade-sticker {
+    width: 220px;
+
+    background: #0f172a;
+
+    border-radius: 15px;
+
+    padding: 20px;
+
+    text-align: center;
+}
+
+.trade-sticker h4 {
+    color: #22c55e;
+
+    margin-bottom: 10px;
+}
+
+.trade-sticker p {
+    margin: 6px 0;
+}
+
+.trade-arrow {
+    font-size: 42px;
+
+    color: #22c55e;
+
+    font-weight: bold;
+}
+
+.trade-buttons {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 20px;
+}
+
+.trade-buttons button {
+    min-width: 140px;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
 
 #mainFooter {
-    background-color: #111;
-    color: #0a992e;
-    padding: 15px 0;
-    width: 100%;
+    margin-top: 10px;
+    padding: 15px 20px;
+    background: #0f172a;
     text-align: center;
-    font-size: 14px;
-    border-top: 1px solid #0a992e;
-    /* Eliminamos position fixed */
+    color: #94a3b8;
 }
-
-

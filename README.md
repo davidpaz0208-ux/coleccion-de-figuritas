@@ -99,15 +99,15 @@ Se recomienda agregar imágenes de:
 
 ### Inicio de sesión
 
-![Login](images/Inicio de Sesion.png)
+![Login](images/Login.png)
 
 ### Pantalla principal
 
-![Inicio](images/Pantalla Principal.png)
+![Inicio](images/Inicio.png)
 
 ### Mi colección
 
-![Colección](images/Mi colección.png)
+![Colección](images/Colección.png)
 
 ### Mercado
 

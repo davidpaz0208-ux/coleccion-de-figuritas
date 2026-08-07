@@ -95,6 +95,28 @@ Se recomienda agregar imágenes de:
 - Mercado.
 - Chat.
 
+## 📸 Capturas de pantalla
+
+### Inicio de sesión
+
+![Login](images/Login.png)
+
+### Pantalla principal
+
+![Inicio](images/Inicio.png)
+
+### Mi colección
+
+![Colección](images/Colección.png)
+
+### Mercado
+
+![Mercado](images/Mercado.png)
+
+### Chat
+
+![Chat](images/Chat.png)
+
 ## 👨‍💻 Autor
 
 **David Alejandro Paz**

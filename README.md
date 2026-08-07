@@ -99,23 +99,23 @@ Se recomienda agregar imágenes de:
 
 ### Inicio de sesión
 
-![Login](images/login.png)
+![Login](images/Inicio de Sesion)
 
 ### Pantalla principal
 
-![Inicio](images/inicio.png)
+![Inicio](images/Pantalla Principal)
 
 ### Mi colección
 
-![Colección](images/coleccion.png)
+![Colección](images/Mi colección)
 
 ### Mercado
 
-![Mercado](images/mercado.png)
+![Mercado](images/Mercado.png)
 
 ### Chat
 
-![Chat](images/chat.png)
+![Chat](images/Chat.png)
 
 ## 👨‍💻 Autor
 
